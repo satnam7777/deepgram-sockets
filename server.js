@@ -1,9 +1,10 @@
 // server.js
 const { createClient, LiveTranscriptionEvents } = require("@deepgram/sdk");
 const WebSocket = require('ws');
-
+require('dotenv').config()
 const DEEPGRAM_API_KEY = "43b551846f6be3e0b9ab06ed291e5ebf8674434e";
-const wss = new WebSocket.Server({ port: 3002 });
+// const PORT = process.env.PORT
+const wss = new WebSocket.Server({ port: process.env.PORT });
 
 wss.on('connection', (ws) => {
  const deepgram = createClient(DEEPGRAM_API_KEY);
